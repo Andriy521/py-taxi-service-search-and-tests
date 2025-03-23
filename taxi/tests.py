@@ -70,6 +70,7 @@ class CarSearchTest(TestCase):
         response = self.client.get(reverse("car_list") + "?q=Model S")
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Model S")
+        self.assertNotContains(response, "Model 3")
         self.assertNotContains(response, "Mustang")
 
     def test_search_case_insensitive(self):
